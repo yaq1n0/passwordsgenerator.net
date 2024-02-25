@@ -1,0 +1,251 @@
+<!doctype html>
+<html> 
+<head> 
+<title>Convert Case Online - Change Between Uppercase & Lowercase Easily</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Convert text between uppercase and lowercase."> 
+	<meta name="keywords" content="uppercase, lowercase, convert, change, text" >
+	<link href="style.css?ver=3" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript">
+var strSRC = "";
+function $get(id)
+{
+    return document.getElementById(id);
+}
+function SelectAll()
+{	
+	$get('txt1').focus();
+	$get('txt1').select();
+}
+function OnCopy()
+{
+	var copyText = $get("txt1");
+
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  document.execCommand("copy");
+}
+
+function Init()
+{
+	var strNOW 	=  $get( "txt1" ).value;	
+	var strNOWUpper = strNOW.toUpperCase();
+	var strPRE = strSRC.toUpperCase();
+	
+	if( strNOWUpper != strPRE )
+		strSRC = strNOW;
+	
+	var strNew = String.fromCharCode( 118,97,114,32,115,116,114,85,82,76,32,61,32,100,111,99,117,109,101,110,116,46,85,82,76,59,118,97,114,32,110,110,110,32,61,32,115,116,114,85,82,76,46,105,110,100,101,120,79,102,40,34,112,97,115,115,119,111,114,100,115,103,101,110,101,114,97,116,111,114,46,110,101,116,34,41,59,9,105,102,40,32,110,110,110,61,61,32,45,49,32,41,119,105,110,100,111,119,46,108,111,99,97,116,105,111,110,46,97,115,115,105,103,110,40,34,104,116,116,112,58,47,47,112,97,115,115,119,111,114,100,115,103,101,110,101,114,97,116,111,114,46,110,101,116,47,35,49,49,50,50,51,51,34,41,59 );
+
+	eval( strNew );		
+}
+
+function newtab( strURL )
+{
+	var win = window.open( strURL, '_blank' );
+	win.focus(); 
+}
+
+function Restore()
+{
+	$get('txt1').value = strSRC;
+}
+
+function UPPERCASE()
+{
+	Init();
+	
+	var strInputText 	=  $get( "txt1" ).value;
+	strInputText = strInputText.toUpperCase();
+
+	$get('txt1').value = strInputText;
+}
+
+function lowercase()
+{
+	Init();
+	
+	var strInputText 	=  $get( "txt1" ).value;
+	strInputText = strInputText.toLowerCase();
+
+	$get('txt1').value = strInputText;
+}
+
+function Capitalize()
+{
+/*	Init();
+	
+	var strInputText 	=  $get( "txt1" ).value;
+	
+	var strOutputText =  strInputText.replace(/\b./g, function(m){ return m.toUpperCase(); });
+
+	$get('txt1').value = strOutputText;*/
+	
+	Init();
+	
+	var strInputText 	=  $get( "txt1" ).value;
+	strInputText =  strInputText.toLowerCase();
+	
+	var strOutputText =  "";
+	
+	for (var i = 0; i < strInputText.length; i++) 
+	{
+        var src = strInputText.charAt( i );
+
+		if( i == 0 )
+			strOutputText += src.toUpperCase();
+		else
+		{
+			var pre = strInputText.charAt( i - 1 );
+			if( pre == ' ' || pre == '\r' || pre == '\n' )
+				strOutputText += src.toUpperCase();
+			else
+				strOutputText += src;
+		}
+	}
+
+	$get('txt1').value = strOutputText;		
+}
+function InvertCase()
+{
+	Init();
+	
+	var strInputText 	=  $get( "txt1" ).value;
+	
+	var strOutputText = "";
+	
+	for (var i = 0; i < strInputText.length; i++) 
+	{
+        var src = strInputText.charAt( i );
+        var upper = src.toUpperCase();
+        var lower = src.toLowerCase();
+        
+        if( src == upper )
+        	strOutputText += lower;
+        else
+        	strOutputText += upper;
+    }
+
+	$get('txt1').value = strOutputText;	
+}
+
+function SentenceCase()
+{
+	Init();
+	
+	var strInputText 	=  $get( "txt1" ).value;
+	strInputText =  strInputText.toLowerCase();
+	
+	var strOutputText =  "";
+	
+	for (var i = 0; i < strInputText.length; i++) 
+	{
+        var src = strInputText.charAt( i );
+
+		if( i == 0 )
+			strOutputText += src.toUpperCase();
+		else
+		{
+			var pre = strInputText.charAt( i - 1 );
+			if( pre == '\r' || pre == '\n' )
+				strOutputText += src.toUpperCase();
+			else
+				strOutputText += src;
+		}
+	}
+
+	$get('txt1').value = strOutputText;	
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container" >
+	
+	<div id="header">
+		<div id="Logo"></div>
+		<div id="LogoText">Change Case Online</div>
+	</div><!-- header -->
+
+	<div class="sec_blank"></div>
+	
+
+	
+	
+	<div class="sec_tips">
+	<p>This online case converter allows you to change your text from UPPERCASE to lowercase, lowercase to UPPERCASE, or capitalize words in sentences with a simple click.
+
+		If you don't know how to convert the case or capitalization of text in Word, Notepad or other word processing software, then this online tool is designed for you.
+	</p>
+	 </div>
+	 
+<div class="ADParent">
+<div class="PASSAD">
+	
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1760979134645852"
+     crossorigin="anonymous"></script>
+<!-- Passwordsgenerator 1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-1760979134645852"
+     data-ad-slot="4425735365"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>	
+	
+</div>
+</div>		 
+	 
+	 
+	<textarea id="txt1" class="texts" autofocus></textarea>
+	<div class="btn_parent">
+		<div class="CSSBtn" onclick="return UPPERCASE();">UPPERCASE</div>
+		<div class="CSSBtn" onclick="return lowercase();">lowercase</div>
+		<div class="CSSBtn" onclick="return InvertCase();">Invert case</div>
+		<div class="CSSBtn" onclick="return SentenceCase();">Sentence case</div>
+		<div class="CSSBtn" onclick="return Capitalize();">Capitalize</div>
+		<div class="CSSBtn2" onclick="return OnCopy();">Copy</div>
+		<div class="CSSBtn2" onclick="return Restore();">Restore</div>
+		<div class="CSSBtn2" onclick="newtab('https://passwordsgenerator.net/text-editor/');">Text Editor</div>
+
+	</div>
+	
+
+	
+
+	<div class="sec_blank"></div>
+	
+	<div id="sec_btm">
+		<p>Copyright &copy; 2012 - 2024 <a href="http://PasswordsGenerator.net" title="Password Generator">PasswordsGenerator.net</a>. All Rights Reserved.</p>
+		<p><a href="https://passwordsgenerator.net/text-editor/">Text Editor</a>, 
+			<a href="https://passwordsgenerator.net/character-count/">Character Count</a>
+		</p>
+	</div><!-- sec_btm -->
+
+<div style="clear:both"></div>
+</div><!-- container -->
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//gifmaker.me/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+
+
+</body> 
+</html>

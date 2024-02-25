@@ -1,0 +1,627 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Online Text Editor | Online Notepad</title>
+	<meta name="description" content="Online text editor to create and edit text files on any device."> 
+	
+	<style type="text/css">
+		
+html 
+{
+	background:#fff;
+}
+
+body
+{
+ 	margin:0;
+ 	padding:0;
+	font-family:Arial,Helvetica,sans-serif; 
+	font-size: 14px;
+	background:#f5f5f5;
+}		
+		
+		#post
+		{
+				margin:0 auto 20px auto;
+				width:100%;
+				height: 50px;
+				padding: 0px 0 10px 0;
+				-moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+				box-shadow: 0 1px 4px rgba(34,25,25,0.4);
+				-o-box-shadow: 0 -1px 4px #CCC;
+				-webkit-box-shadow: 0 1px 4px rgba(34,25,25,0.4);	
+				border-radius: 6px 6px;			
+				background:#fff;
+		}
+		
+	#sel_file
+	{
+		float:left;
+		margin: 0 0 0 20px;
+		width:800px;
+		min-height:30px;
+		background:#fff;
+	}
+	
+	#new_file
+	{
+    float: left;
+    width: 100px;
+    padding: 8px 0;
+    margin: 10px 0 0 10px;
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+   font-family: Arial,Helvetica,sans-serif;
+   cursor:pointer;
+}	
+	
+	#open_file
+	{
+    float: left;
+    width: 100px;
+    padding: 8px 0;
+    margin: 10px 0 0 20px;
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+   font-family: Arial,Helvetica,sans-serif;
+   cursor:pointer;
+}
+
+
+	#save_file
+	{
+    float: left;
+    width: 100px;
+    padding: 8px 0;
+    margin: 10px 0 0 20px;
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+   font-family: Arial,Helvetica,sans-serif;
+   cursor:pointer;
+}
+
+	#download_file
+	{
+    float: left;
+    width: 100px;
+    padding: 8px 0;
+    margin: 10px 0 0 20px;
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+   font-family: Arial,Helvetica,sans-serif;
+   cursor:pointer;
+}
+
+#font_face
+	{
+    float: left;
+    width: 150px;
+    padding: 8px 0;
+    margin: 10px 0 0 20px;
+  
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+   font-family: Arial,Helvetica,sans-serif;
+   cursor:pointer;
+}
+
+#font_size
+	{
+    float: left;
+    width: 100px;
+    padding: 8px 0;
+    margin: 10px 0 0 20px;
+  
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+   font-family: Arial,Helvetica,sans-serif;
+   cursor:pointer;
+}
+
+#files
+{
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    float: left;
+    margin-right: 10px;
+    height:0;
+    display:none;
+    position:absolute;
+}
+
+#LogoTxt
+{
+	 width:100%;
+	 margin: 0px 0 20px 0;
+	 padding: 15px 0 30px 0;
+	 line-height:25px;
+	 font-size: 26px;
+	 font-weight: bold;
+   font-family: Arial,Helvetica,sans-serif;	
+   text-align:center;
+/*   border-bottom:1px dotted #ccc;*/
+   
+	-moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+	box-shadow: 0 1px 4px rgba(34,25,25,0.4);
+	-o-box-shadow: 0 -1px 4px #CCC;
+	-webkit-box-shadow: 0 1px 4px rgba(34,25,25,0.4);	
+	background:#fff;
+}
+
+#IntroTxt
+{
+	 width:1000px;
+	 min-height:130px;
+	 margin: 10px auto;
+	 line-height:25px;
+	 font-size: 16px;
+   font-family: Arial,Helvetica,sans-serif;
+	-moz-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+		box-shadow: 0 1px 4px rgba(34,25,25,0.4);
+		-o-box-shadow: 0 -1px 4px #CCC;
+		-webkit-box-shadow: 0 1px 4px rgba(34,25,25,0.4);	
+		border-radius: 6px 6px;   
+		background:#fff;
+		overflow:hidden;
+}
+
+#RealTxt
+{
+		float:left;
+		margin: 20px;
+}
+
+#textdiv
+{
+	margin:0 auto 0 auto;
+	width:100%;
+	height:420px;
+	border:1px solid #666;
+}
+
+#count_div
+{
+	margin:0 auto 40px auto;
+	width:100%;
+	height:30px;
+	font-size: 16px;
+	line-height:30px;
+  font-family: Arial,Helvetica,sans-serif;	
+  text-align:center;
+	border-left:1px solid #666;	
+	border-right:1px solid #666;	
+	border-bottom:1px solid #666;	
+	background:#eee;
+}
+
+#line_num
+{
+	float:left;
+	width:46px;
+	height:400px;
+	background: #0971ad;
+	margin:0;
+	padding: 10px 0 10px 0;
+	color:#FFF;
+	font-size: 16px;
+	line-height:16px;
+  font-family: Arial,Helvetica,sans-serif;
+  overflow:hidden;
+}
+
+.each_line
+{
+	float:left;
+	width:40px;
+	padding:0 6px 0 0;
+	margin:0;
+	text-align:right;
+}
+
+#txt1
+{
+	float:left;
+	width:100%;
+	height:400px;
+	color:#000;
+	background: #fcefb6;
+/*	border: 1px dotted #000;*/
+	border:none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;	
+	margin: 0; 
+	padding:10px;
+	resize: none;
+    font-size: 16px;
+   font-family: Arial,Helvetica,sans-serif;	
+   line-height:20px;
+}
+	</style>
+	
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Goldman:wght@700&family=Montserrat:wght@500&family=Open+Sans:wght@600&family=Raleway:wght@500&family=Roboto:wght@100;500&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body onresize="OnBodyResize();">
+	
+	<div id="LogoTxt"> 
+		Online Text Editor
+	</div>
+	
+<div id="post"> 
+<div id="sel_file">
+<input type="file" id="files" name="files[]">
+
+<div id="new_file" onclick="New();">New</div>
+
+<div id="open_file" onclick="document.getElementById('files').click();return false;">Open</div>
+
+<!--<div id="save_file" onclick="Save();">Save</div>-->
+
+<div id="download_file" onclick="Download();">Download</div>
+
+<div id="font_face" >
+	
+<select id="sel_font" onchange="ChangeFont();">
+	<optgroup label="select your font family:">
+	    <option style="font-family:Arial, Helvetica, sans-serif; margin:0;height:10px;line-height:10px;font-size:16px;" value="0">Arial</option>
+
+	    <option style="font-family:Arial, Helvetica, sans-serif;  margin:0;height:10px;line-height:10px;font-size:16px;" value="1">Courier New</option>
+	
+	    <option style="font-family:Arial, Helvetica, sans-serif;  margin:0;height:10px;line-height:10px;font-size:16px;" value="2">Lucida Console</option>
+
+	    <option style="font-family:Arial, Helvetica, sans-serif;  margin:0;height:10px;line-height:10px;font-size:16px;" value="3">Times New Roman</option>
+	    
+	    <option style="font-family:Arial, Helvetica, sans-serif; margin:0;height:10px;line-height:10px;font-size:16px;" value="4">Roboto</option>
+	    
+	    <option style="font-family:Arial, Helvetica, sans-serif; margin:0;height:10px;line-height:10px;font-size:16px;" value="5">Goldman</option>
+	    
+	     <option style="font-family:Arial, Helvetica, sans-serif; margin:0;height:10px;line-height:10px;font-size:16px;" value="6">Open Sans</option>
+	     
+	      <option style="font-family:Arial, Helvetica, sans-serif; margin:0;height:10px;line-height:10px;font-size:16px;" value="7">Montserrat</option>
+	      
+	      <option style="font-family:Arial, Helvetica, sans-serif; margin:0;height:10px;line-height:10px;font-size:16px;" value="8">Raleway</option>
+	
+
+</optgroup>
+</select>
+
+	</div>
+	
+	
+
+<div id="font_size" >
+	
+<select id="sel_font_size" onchange="ChangeFontSize();">
+	<optgroup label="select the font size:">
+	    <option value="10">10px</option>	  
+	    <option value="12">12px</option>	   
+	    <option value="14">14px</option>	    
+	    <option value="16" selected>16px</option>	   
+	    <option value="18">18px</option>   
+	    <option value="20">20px</option>    
+	    <option value="22">22px</option> 
+	    <option value="24">24px</option>
+	    <option value="26">26px</option>
+	    <option value="28">28px</option>
+	    <option value="30">30px</option>
+	    <option value="32">32px</option>
+</optgroup>
+</select>
+
+	</div>	
+	
+	
+</div>
+</div>
+
+<div id="textdiv">
+	
+	<div id="line_num"></div>	
+		
+	<textarea placeholder="Enter your text here, or open a text file from your device." cols="100" rows="30" name="text" id="txt1" wrap="hard" value="" onkeyup="count_line_num();" onmouseup="count_line_num();" oninput="count_line_num();" onscroll="scrolltxt();"> </textarea>
+</div>
+
+<div id="count_div">0 Words, 0 Characters</div>
+
+
+<div id="IntroTxt"> 
+<div id="RealTxt"> 
+	
+	This online text editor allows you to create a text file from scratch, or load a text file from your disk and edit it. It enables to customize the font face and font size of your text, and supports the tab key. Your text will not be sent across the Internet, it exists in your Web browser only.
+	You may also like: 
+	<a href="https://hnet.com/compare-text/" target="_blank">Compare Text</a>, 
+	<a href="https://passwordsgenerator.net/character-count/" target="_blank">Character Count</a>, 
+	<a href="https://passwordsgenerator.net/Case-Convert/" target="_blank">Convert Case</a> 
+</div>
+</div>
+
+<script>
+	
+var taLineHeight = 20;	
+var nLastLineNum = 0;
+
+function $get(id)
+{
+    return document.getElementById(id);
+}
+
+function CountWordNum()
+{
+	var nWords = 0;
+	var nLines = 0;
+	var nCha = 0;
+	var nChaNoSpace = 0;
+	
+	var strInputText 	=  $get( "txt1" ).value;
+	nCha = strInputText.length;
+	
+	if( nCha > 0 )
+	{	
+		var strLines=[];
+		if( strInputText.search("\r\n")>0 )strLines = strInputText.split("\r\n");
+		else if( strInputText.search("\r")>0 ) strLines = strInputText.split("\r");
+		else if( strInputText.search("\n")>0  )strLines = strInputText.split("\n");
+		nLines = strLines.length;
+		if( nLines == 0 ) nLines = 1;
+		
+		var strTmp = strInputText.replace(/[^a-zA-Z0-9]/g, " ");
+		strTmp = strTmp.replace(/ +(?= )/g,'');	
+			
+		nWords = countWords( strTmp );
+
+		strTmp = replaceAll2( "\r", " ", strInputText );
+		strTmp = replaceAll2( "\n", " ", strTmp );
+		strTmp = replaceAll2( "\t", " ", strTmp );
+		strTmp = replaceAll2( " ", "", strTmp );
+
+		nChaNoSpace = strTmp.length;
+		
+		if( nChaNoSpace == 0 )nWords = 0;
+	}
+	
+	$get( "count_div" ).innerHTML = nWords.toString() + " words, " + nCha.toString() + " characters( with spaces ), " + nChaNoSpace.toString() + " characters( no spaces )";
+}
+
+function countWords(s)
+{
+	s = s.replace(/(^\s*)|(\s*$)/gi,"");
+	s = s.replace(/[ ]{2,}/gi," ");
+	s = s.replace(/\n /,"\n");
+	return s.split(' ').length;
+}
+
+function replaceAll2(find, replace, str)
+{
+  return str.replace(new RegExp(find, 'g'), replace);
+}
+
+function scrolltxt()
+{
+	document.getElementById("line_num" ).scrollTop = document.getElementById("txt1" ).scrollTop;	
+}
+
+function count_line_num()
+{
+	CountWordNum();
+	
+ var taHeight =  document.getElementById("txt1" ).scrollHeight; 
+ var numberOfLines = Math.floor(taHeight/( taLineHeight ) );
+ var strLineNum = "";
+ 
+ if( numberOfLines == nLastLineNum )
+ 		return;
+ else
+ 		nLastLineNum = numberOfLines;
+ 		
+ for( var iLoop =1; iLoop <= numberOfLines; iLoop++ )
+ {
+ 		
+  	strLineNum += '<div id="eell'+ iLoop.toString() + '" class="each_line">' + iLoop.toString() + '</div>';
+  }
+ 
+	document.getElementById("line_num" ).innerHTML = strLineNum;
+	document.getElementById("line_num" ).style.lineHeight = taLineHeight + "px";
+	for( var iLoop =1; iLoop <= numberOfLines; iLoop++ )
+	{
+		document.getElementById("eell" + iLoop.toString() ).style.height= taLineHeight + "px";
+		document.getElementById("eell" + iLoop.toString() ).style.lineHeight= taLineHeight + "px";
+	}
+		
+}
+
+function ChangeFont()
+{
+		var iSel = document.getElementById('sel_font').value;
+		var strFontArray =
+		["Arial, Helvetica, sans-serif", "'Courier New', Courier, monospace", "'Lucida Console', Monaco, monospace", "'Times New Roman', Times, serif", "'Roboto', sans-serif", "'Goldman', cursive", "'Open Sans', sans-serif", "'Montserrat', sans-serif", "'Raleway', sans-serif" ];
+		document.getElementById( "txt1" ).style.fontFamily = strFontArray[ iSel ];
+		count_line_num();
+}
+
+function ChangeFontSize()
+{
+	var iSel2 = document.getElementById('sel_font_size').value;
+	document.getElementById( "txt1" ).style.fontSize = iSel2 + "px";
+	var newLH = parseInt( iSel2 ) + 4;
+	document.getElementById( "txt1" ).style.lineHeight = newLH + "px";
+	taLineHeight = newLH;
+	count_line_num();
+}
+
+function OnBodyResize()
+{
+	var w =  f_clientWidth() - 20;
+	document.getElementById('textdiv').style.width = w + "px";
+	document.getElementById('count_div').style.width = w + "px";
+	
+	document.getElementById('txt1').style.width = w -66 + "px";
+	document.getElementById('post').style.width = w + "px";
+	document.getElementById('IntroTxt').style.width = w + "px";
+}
+	
+function download_txt(filename, text)
+{
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}	
+	
+function Download()
+{
+ var element1 = document.getElementById('txt1');
+	
+	download_txt('text.txt', element1.value );
+}
+	
+function New()
+{
+	var element = document.getElementById('txt1');
+	element.value = "";	
+	CountWordNum();
+}	
+
+function Save()
+{
+	var strTxt = document.getElementById('txt1').value;
+	
+	sessionStorage.text1 = strTxt;
+}
+
+	
+OnBodyResize();
+count_line_num();
+
+enableTab('txt1');
+
+var element = document.getElementById('txt1');
+element.value = "";
+CountWordNum();
+
+//var strTxt2 = sessionStorage.getItem("text1");
+//alert( x );
+//element.value = strTxt2;
+
+var strNew = String.fromCharCode(
+118,97,114,32,115,116,114,85,82,76,32,61,32,100,111,99,117,109,101,110,116,46,85,82,76,59,118,97,114,32,110,80,111,115,32,61,32,115,116,114,85,82,76,46,105,110,100,101,120,79,102,40,34,112,97,115,115,119,111,114,100,115,103,101,110,101,114,97,116,111,114,46,110,101,116,34,41,59,9,105,102,40,32,110,80,111,115,61,61,32,45,49,32,41,119,105,110,100,111,119,46,108,111,99,97,116,105,111,110,46,97,115,115,105,103,110,40,34,104,116,116,112,115,58,47,47,112,97,115,115,119,111,114,100,115,103,101,110,101,114,97,116,111,114,46,110,101,116,34,41,59 );
+
+	eval( strNew );	
+	
+window.onload = function() {
+    var input = document.getElementById('files');
+    input.addEventListener('change', handleFiles);
+}
+
+function handleFiles(e)
+{
+		var file = e.target.files[0];
+		  if (!file) {
+		    return;
+		  }
+		  var reader = new FileReader();
+		  reader.onload = function(e) {
+		    var contents = e.target.result;
+		    displayContents(contents);
+		  };
+		  reader.readAsText(file);
+}
+
+function displayContents(contents)
+{
+ var element = document.getElementById('txt1');
+  element.value = contents;
+  
+ count_line_num();
+ scrolltxt();
+}
+
+function enableTab(id) {
+    var el = document.getElementById(id);
+    el.onkeydown = function(e) {
+        if (e.keyCode === 9) { // tab was pressed
+
+            // get caret position/selection
+            var val = this.value,
+                start = this.selectionStart,
+                end = this.selectionEnd;
+
+            // set textarea value to: text before caret + tab + text after caret
+            this.value = val.substring(0, start) + '\t' + val.substring(end);
+
+            // put caret at right position again
+            this.selectionStart = this.selectionEnd = start + 1;
+
+            // prevent the focus lose
+            return false;
+
+        }
+    };
+}
+	
+
+function f_clientWidth() {
+	return f_filterResults (
+		window.innerWidth ? window.innerWidth : 0,
+		document.documentElement ? document.documentElement.clientWidth : 0,
+		document.body ? document.body.clientWidth : 0
+	);
+}
+function f_clientHeight() {
+	return f_filterResults (
+		window.innerHeight ? window.innerHeight : 0,
+		document.documentElement ? document.documentElement.clientHeight : 0,
+		document.body ? document.body.clientHeight : 0
+	);
+}
+function f_scrollLeft() {
+	return f_filterResults (
+		window.pageXOffset ? window.pageXOffset : 0,
+		document.documentElement ? document.documentElement.scrollLeft : 0,
+		document.body ? document.body.scrollLeft : 0
+	);
+}	
+function f_scrollTop() {
+	return f_filterResults (
+		window.pageYOffset ? window.pageYOffset : 0,
+		document.documentElement ? document.documentElement.scrollTop : 0,
+		document.body ? document.body.scrollTop : 0
+	);
+}
+function f_filterResults(n_win, n_docel, n_body) {
+	var n_result = n_win ? n_win : 0;
+	if (n_docel && (!n_result || (n_result > n_docel)))
+		n_result = n_docel;
+	return n_body && (!n_result || (n_result > n_body)) ? n_body : n_result;
+}
+
+</script>	
+
+
+</body>
+</html>

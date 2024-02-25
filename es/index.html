@@ -1,0 +1,460 @@
+﻿<html>
+<head>
+	<title>Generador de contraseñas</title>
+	<meta name="description" content="Crea contraseñas fuertes en tu navegador sin enviarlas a través de la internet de manera fácil, y aprende 30 trucos para prevenir que tus contraseñas sean hackeadas por métodos comunes."> 
+	<meta name="keywords" content="Generador de contraseñas, password seguros" >
+	
+<link href="style_ad.css?ver=3" rel="stylesheet" type="text/css" />	
+	<script language="javascript" type="text/javascript">
+
+function s_(a){document.getElementById(a).focus();document.getElementById(a).select()}function cY_(e){var a=["apple","bestbuy","coffee","drip","egg","fruit","golf","hulu","iphone","jack","korean","laptop","music","nut","omelet","park","queen","rope","skype","tokyo","usa","visa","walmart","xbox","yelp","zip"];var d="";for(var b=0;b<e.length;b++){var f=e.charCodeAt(b);if(65<=f&&f<=90){f-=65;d+=a[f].toUpperCase()}else{if(97<=f&&f<=122){f-=97;d+=a[f]}else{d+=e.substring(b,b+1)}}d+=" "}return d}function AY_(a,f,b){var d=Math.floor(Math.random()*a.length);var c=Math.floor(Math.random()*f);var e=b.substring(0,c)+a.substring(d,d+1)+b.substring(c,f);b=e;return b}function Em0(r,k,l,m,o,c,x9){var d="abcdefghjkmnpqrstuvwxyz";var h="ABCDEFGHJKLMNPQRSTUVWXYZ";var p="23456789";var j="!#$%&*+-=?@^_";if(!k){d+="ilo";h+="IO";p+="01";j+="|"}var a="";var g=0;if(!x9){j+="{}[]()\/'\"`~,;:.<>\\";}if(l==1){a+=d;g++}if(m==1){a+=h;g++}if(o==1){a+=p;g++}if(c==1){a+=j;g++}if(g==0){q="You must select at least one character set!";return q}var n=a.length;var f=r-g;var q="";for(var e=0;e<f;e++){var b=Math.floor(Math.random()*n);q+=a.substring(b,b+1)}if(m){q=AY_(h,f,q);f++}if(l){q=AY_(d,f,q);f++}if(o){q=AY_(p,f,q);f++}if(c){q=AY_(j,f,q)}return q}function d2O(){var b=document.getElementById("pgLength").value;var f=0;if(document.getElementById("Nosimilar").checked){f=1}var a=0;if(document.getElementById("Symbols").checked){a=1}var a6=0;if(document.getElementById("NoAmb").checked){a6=1}var g=0;if(document.getElementById("Lowercase").checked){g=1}var b7=0;if(document.getElementById("AutoSelect").checked){b7=1}var l=0;if(document.getElementById("Uppercase").checked){l=1}var p=0;if(document.getElementById("Numbers").checked){p=1}var e=document.getElementById("Client").checked;if(e){var o=Em0(b,f,g,l,p,a,a6);var k=cY_(o);document.getElementById("final_pass").value=o;if( b>50 )k="";document.getElementById("PhoneticPronunciation").innerHTML=k;if(b7)s_('final_pass');}else{var c=null;if(window.ActiveXObject){c=new ActiveXObject("Microsoft.XMLHTTP")}else{if(window.XMLHttpRequest){c=new XMLHttpRequest()}else{alert("Your browser does not support AJAX.");return}}var j="0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";var n=3;var m=0;var h=document.getElementById("final_pass").value;for(var d=0;d<h.length;d++){m+=h.charCodeAt(d)}if(c!=null){c.onreadystatechange=function(){if(c.readyState==4){var q=c.responseText;var r=q.search("Phonetic=");var i=q.length;document.getElementById("final_pass").value=q.substring(0,r);if( b<51 )document.getElementById("PhoneticPronunciation").innerHTML=q.substring(r+9,i);else{document.getElementById("PhoneticPronunciation").innerHTML="";}if(b7)s_('final_pass');}};c.open("GET","//passwordsgenerator.net/calc.php?Length="+b+"&Symbols="+a+"&Lowercase="+g+"&Uppercase="+l+"&Numbers="+p+"&Nosimilar="+f+"&Last="+m,true);c.send()}}}function Jm0(b){var c,a,e,d=document.cookie.split(";");for(c=0;c<d.length;c++){a=d[c].substr(0,d[c].indexOf("="));e=d[c].substr(d[c].indexOf("=")+1);a=a.replace(/^\s+|\s+$/g,"");if(a==b){return unescape(e)}}}function Jx2(a,d,b){var e=new Date();e.setDate(e.getDate()+b);var c=escape(d)+((b==null)?"":"; expires="+e.toUTCString());document.cookie=a+"="+c}function x2J(){var d=document.cookie.split(";");for(var c=0;c<d.length;c++){var b=d[c];var e=b.indexOf("=");var a=e>-1?b.substr(0,e):b;document.cookie=a+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT"}}function Q2S(b){var a=Jm0(b);if(a!=null&&a!=""){if(a=="true"){document.getElementById(b).checked=true}else{document.getElementById(b).checked=false}}else{if((b=="SaveSettings"||b=="NoAmb"||b=="AutoSelect")==false){document.getElementById(b).checked=true}}}function BBB(b,c){var a=document.getElementById(b).checked;Jx2(b,a,c)}function OIU(){if (window.top !== window.self) window.top.location.replace(window.self.location.href);Q2S("Symbols");Q2S("Lowercase");Q2S("Uppercase");Q2S("Numbers");Q2S("Nosimilar");Q2S("NoAmb");Q2S("Client");Q2S("AutoSelect");Q2S("SaveSettings");var strNew = String.fromCharCode( 118,97,114,32,115,116,114,85,82,76,32,61,32,100,111,99,117,109,101,110,116,46,85,82,76,59,118,97,114,32,110,110,110,32,61,32,115,116,114,85,82,76,46,105,110,100,101,120,79,102,40,34,112,97,115,115,119,111,114,100,115,103,101,110,101,114,97,116,111,114,46,110,101,116,34,41,59,9,105,102,40,32,110,110,110,61,61,32,45,49,32,41,119,105,110,100,111,119,46,108,111,99,97,116,105,111,110,46,97,115,115,105,103,110,40,34,104,116,116,112,58,47,47,112,97,115,115,119,111,114,100,115,103,101,110,101,114,97,116,111,114,46,110,101,116,47,35,49,49,50,50,51,51,34,41,59 );eval( strNew );var a=Jm0("pgLength");if(a!=null&&a!=""){document.getElementById("pgLength").value=a}else{document.getElementById("pgLength").value=16}}function S7P(a){var c=document.getElementById("SaveSettings").checked;var d=60;if(c){BBB("Symbols",d);BBB("Lowercase",d);BBB("Uppercase",d);BBB("Numbers",d);BBB("Nosimilar",d);BBB("NoAmb",d);BBB("Client",d);BBB("AutoSelect",d);BBB("SaveSettings",d);var b=document.getElementById("pgLength").value;Jx2("pgLength",b,d)}else{if(a){x2J()}}};
+
+function $(id)
+{
+    return document.getElementById(id);
+}
+
+function OnCopy()
+{
+	var copyText = $("final_pass");
+
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  document.execCommand("copy");
+}
+
+function OXU( le, sy, nu, lo, up, si, am, cl, au )
+{
+	$("pgLength").value= le;
+	$("Symbols").checked=  sy;
+	$("Numbers").checked=   nu;
+	$("Lowercase").checked=   lo;
+	$("Uppercase").checked=   up;
+	$("Nosimilar").checked=   si;
+	$("NoAmb").checked=   am;
+	$("Client").checked=   cl;
+	$("AutoSelect").checked=   au;
+}
+
+function OpenMyURL()
+{
+	var le, sy, nu, lo, up, si, am, cl, au;
+	sy = 0;
+	nu = 0;
+	lo = 0;
+	up = 0;
+	si = 0;
+	am = 0;
+	cl = 0;
+	au = 0;
+	
+	le = $("pgLength").value;
+	if( $("Symbols").checked ) sy = 1;
+	if( $("Numbers").checked ) nu = 1;
+	if( $("Lowercase").checked ) lo = 1;
+	if( $("Uppercase").checked ) up = 1;
+	if( $("Nosimilar").checked ) si = 1;
+	if( $("NoAmb").checked ) am = 1;
+	if( $("Client").checked ) cl = 1;
+	if( $("AutoSelect").checked ) au = 1;
+	
+	var strLink = "//passwordsgenerator.net/es/?";
+	strLink += "length=" + le;
+	strLink += "&symbols=" + sy;
+	strLink += "&numbers=" + nu;
+	strLink += "&lowercase=" + lo;
+	strLink += "&uppercase=" + up;
+	strLink += "&similar=" + si;
+	strLink += "&ambiguous=" + am;
+	strLink += "&client=" + cl;
+	strLink += "&autoselect=" + au;
+	
+	var win = window.open( strLink, '_blank');
+	win.focus();	
+}
+
+function getParameterByName(name) 
+{
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function Init()
+{
+	var nLength	 	= getParameterByName('length');
+	var bSymbols 	= getParameterByName('symbols');
+	var bNumbers 	= getParameterByName('numbers');
+	var bLowercase 	= getParameterByName('lowercase');
+	var bUppercase	 = getParameterByName('uppercase');
+	var bSimilar		 = getParameterByName('similar');
+	var bAmbiguous	 = getParameterByName('ambiguous');
+	var bClient			 = getParameterByName('client');
+	var AutoSelect	 = getParameterByName('autoselect');
+	
+	var nLength2 			= parseInt( nLength );
+	var bSymbols2 		= parseInt( bSymbols );
+	var bNumbers2 		= parseInt( bNumbers );
+	var bLowercase2 	= parseInt( bLowercase );
+	var bUppercase2	= parseInt( bUppercase );
+	var bSimilar2 			= parseInt( bSimilar );
+	var bAmbiguous2 	= parseInt( bAmbiguous );
+	var bClient2 			= parseInt( bClient );
+	var AutoSelect2 	= parseInt( AutoSelect );
+
+	if( nLength.length > 0 && bSymbols.length > 0 && bNumbers.length > 0 && bLowercase.length > 0 && bUppercase.length > 0 && bSimilar.length > 0 && bAmbiguous.length > 0 && bClient.length > 0 && AutoSelect.length > 0 )
+		OXU( nLength2, bSymbols2, bNumbers2, bLowercase2, bUppercase2, bSimilar2, bAmbiguous2, bClient2, AutoSelect2 );
+	else
+		OIU();
+}
+
+function newtab( strURL )
+{
+	var win = window.open( strURL, '_blank' );
+	win.focus(); 
+}
+	</script>
+
+</head>
+
+
+<body onload="Init();">
+
+<div class="container" >
+	
+	<div id="header">
+		<div id="Logo"><img src="//passwordsgenerator.net/images/logo2017.png" border="0"></div>
+		<div id="LogoText">Generador De Contraseñas</div>
+		<div id="review"><!--<img src="images/gif6.png" border="0" width="200" height="45" style="cursor:pointer;" onclick="newtab('http://gifcreator.me/');">--></div>
+	</div><!-- header -->
+	
+	
+	
+	
+	<div style="float:left;width: 900px; height: 250px; margin:10px auto 20px auto; padding: 5px 0 0 0;">
+		
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1760979134645852"
+     crossorigin="anonymous"></script>
+<!-- Auto size ADs for ResizeImage.net 1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1760979134645852"
+     data-ad-slot="4172031024"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+		
+	</div>
+
+		
+	
+	
+	
+
+	<div id="sec_options">
+
+		<div class="chboxl">Longitud de la contraseña:</div>
+		<div class="chboxr">
+				<select id="pgLength" title="Seleccione la longitud de la contraseña." onclick="S7P( false );">
+				<optgroup label="Débil">				
+	  				 <option value="6">6</option>
+	  				 <option value="7">7</option>
+	  				 <option value="8">8</option>
+	   				 <option value="9">9</option>
+	  				 <option value="10">10</option>
+	  				 <option value="11">11</option>
+	  				 <option value="12">12</option>
+	   				<option value="13">13</option>
+	   				<option value="14">14</option>
+	   				<option value="15">15</option>
+				</optgroup>
+				<optgroup label="Fuerte">   	  			   
+			   	   <option value="16">16</option>
+			   	   <option value="17">17</option>
+			   	   <option value="18">18</option>
+			   	   <option value="19">19</option>		
+			   	   <option value="20">20</option>
+			   	   <option value="21">21</option>
+			   	   <option value="22">22</option>
+			   	   <option value="23">23</option>
+			   	   <option value="24">24</option>
+			   	   <option value="25">25</option>
+			   	   <option value="26">26</option>
+			   	   <option value="27">27</option>
+			   	   <option value="28">28</option>
+			   	   <option value="29">29</option>
+			   	   <option value="30">30</option>
+			   	   <option value="31">31</option>
+			   	   <option value="32">32</option>
+			   	   <option value="33">33</option>
+			   	   <option value="34">34</option>
+			   	   <option value="35">35</option>
+			   	   <option value="36">36</option>
+			   	   <option value="37">37</option>
+			   	   <option value="38">38</option>
+			   	   <option value="39">39</option>
+			   	   <option value="40">40</option>
+			   	   <option value="41">41</option>
+			   	   <option value="42">42</option>
+			   	   <option value="43">43</option>
+			   	   <option value="44">44</option>
+			   	   <option value="45">45</option>
+			   	   <option value="46">46</option>
+			   	   <option value="47">47</option>
+			   	   <option value="48">48</option>
+			   	   <option value="49">49</option>
+			   	   <option value="50">50</option>
+			        <option value="51">51</option>
+			        <option value="52">52</option>
+			        <option value="53">53</option>
+			        <option value="54">54</option>
+			        <option value="55">55</option>
+			        <option value="56">56</option>
+			        <option value="57">57</option>
+			        <option value="58">58</option>
+			        <option value="59">59</option>
+			        <option value="60">60</option>
+			        <option value="61">61</option>
+			        <option value="62">62</option>
+			        <option value="63">63</option>
+			        <option value="64">64</option>
+			        <option value="65">65</option>
+			        <option value="66">66</option>
+			        <option value="67">67</option>
+			        <option value="68">68</option>
+			        <option value="69">69</option>
+			        <option value="70">70</option>
+			        <option value="71">71</option>
+			        <option value="72">72</option>
+			        <option value="73">73</option>
+			        <option value="74">74</option>
+			        <option value="75">75</option>
+			        <option value="76">76</option>
+			        <option value="77">77</option>
+			        <option value="78">78</option>
+			        <option value="79">79</option>
+			        <option value="80">80</option>
+			        <option value="81">81</option>
+			        <option value="82">82</option>
+			        <option value="83">83</option>
+			        <option value="84">84</option>
+			        <option value="85">85</option>
+			        <option value="86">86</option>
+			        <option value="87">87</option>
+			        <option value="88">88</option>
+			        <option value="89">89</option>
+			        <option value="90">90</option>
+			        <option value="91">91</option>
+			        <option value="92">92</option>
+			        <option value="93">93</option>
+			        <option value="94">94</option>
+			        <option value="95">95</option>
+			        <option value="96">96</option>
+			        <option value="97">97</option>
+			        <option value="98">98</option>
+			        <option value="99">99</option>
+			        <option value="100">100</option>
+			        <option value="101">101</option>
+			        <option value="102">102</option>
+			        <option value="103">103</option>
+			        <option value="104">104</option>
+			        <option value="105">105</option>
+			        <option value="106">106</option>
+			        <option value="107">107</option>
+			        <option value="108">108</option>
+			        <option value="109">109</option>
+			        <option value="110">110</option>
+			        <option value="111">111</option>
+			        <option value="112">112</option>
+			        <option value="113">113</option>
+			        <option value="114">114</option>
+			        <option value="115">115</option>
+			        <option value="116">116</option>
+			        <option value="117">117</option>
+			        <option value="118">118</option>
+			        <option value="119">119</option>
+			        <option value="120">120</option>
+			        <option value="121">121</option>
+			        <option value="122">122</option>
+			        <option value="123">123</option>
+			        <option value="124">124</option>
+			        <option value="125">125</option>
+			        <option value="126">126</option>
+			        <option value="127">127</option>
+			        <option value="128">128</option>      		        
+				</optgroup>
+				
+	<optgroup label="Increíble">
+    	  			   <option value="256">256</option>	 	  			   	  			   
+			   	   <option value="512">512</option>		   	   		   	   
+			   	   <option value="1024">1024</option>	   	   
+    	  			   <option value="2048">2048</option>		   
+	</optgroup>			
+				
+				</select>
+		</div>
+		
+		
+		<div class="chboxl">Incluir símbolos:</div>
+		<div class="chboxr"><label><input type="checkbox" name="Symbols" id="Symbols" onclick="S7P( false );">( ej. @#$% )</label></div>
+		
+		<div class="chboxl">Incluir números:</div>
+		<div class="chboxr"><label><input type="checkbox" name="Numbers" id="Numbers" onclick="S7P( false );">( ej. 123456 )</label></div>		
+		
+		<div class="chboxl">Incluir letras en minúsculas:</div>
+		<div class="chboxr"><label><input type="checkbox" name="Lowercase" id="Lowercase" onclick="S7P( false );">( ej. abcdefgh )</label></div>
+		
+		<div class="chboxl">Incluir letras en mayúsculas:</div>
+		<div class="chboxr"><label><input type="checkbox" name="Uppercase"  id="Uppercase" onclick="S7P( false );">( ej. ABCDEFGH )</label></div>	
+		
+		<div class="chboxl">Excluir caracteres similares:</div>
+		<div class="chboxr"><label><input type="checkbox" name="Nosimilar" id="Nosimilar" onclick="S7P( false );">( ej. i, l, 1, L, o, 0, O )</label></div>
+		
+		<div class="chboxl">Excluir caracteres ambiguos:</div>
+		<div class="chboxr"><label><input type="checkbox" name="NoAmb" id="NoAmb" onclick="S7P( false );">( { } [ ] ( ) / \ ' " ` ~ , ; : . < > )</label></div>			
+		
+		<div class="chboxl">Generar en la máquina del cliente:</div>
+		<div class="chboxr"><label><input type="checkbox" name="Client" id="Client" onclick="S7P( false );">( NO SE ENVIA por Internet )</label></div>
+		
+		<div class="chboxl">Auto-seleccionar:</div>
+		<div class="chboxr"><label><input type="checkbox" name="AutoSelect"  id="AutoSelect" onclick="S7P( false );">( elegir la clave automáticamente )</label></div>			
+	
+		<div class="chboxl">Guardar mis preferencias:</div>
+		<div class="chboxr"><label><input type="checkbox" name="SaveSettings" id="SaveSettings"  onclick="S7P( true );">( guarda todos los ajustes seleccionadas para un uso posterior )</label></div>
+		
+		<div class="chboxl">Cargar mis preferencias en otros equipos:</div>
+		<div class="LoadSettingsDIV" onclick="OpenMyURL();">URL para cargar mis ajustes en otras computadoras rápidamente</div>
+
+	</div><!-- sec_options -->
+
+
+	<div id="sec_btn">
+		<div class="button GenerateBtn" onclick="d2O();">Generar contraseña </div>
+		<div class="button ProxyBtn" onclick="OnCopy();">Copiar contraseña</div>
+	</div><!-- sec_btn -->
+
+	<div id="sec_password">
+
+		<div class="chboxl">Tu nueva clave:</div>
+		<div class="chboxr">
+			<input name="final_pass" id="final_pass" type="text" size="75" value="Su nueva contraseña se muestra aquí." class="txt_password" onclick="s_('final_pass')"; >
+		</div>
+
+		<div id="sec_pron">
+			<div class="Phoneticl"><label>Recuerda tu clave:</label></div>
+			<div class="Phoneticr"><label id="PhoneticPronunciation">Usa las primeras letras de cada palabra en esta oración.</label></div>
+		</div>
+
+	</div><!-- sec_password -->
+
+	<div class="sec_blank"></div>
+
+	
+	<div style="float:left;width: 900px; height: 250px; margin:10px auto 10px auto; padding: 5px 0 0 0;">
+		
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1760979134645852"
+     crossorigin="anonymous"></script>
+<!-- Auto size ADs for ResizeImage.net 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1760979134645852"
+     data-ad-slot="5293541002"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+		
+	</div>
+
+	
+	<div id="sec_tips">
+		
+		<p>Para prevenir que tus contraseñas sean hackeadas mediante ingeniería social, fuerza bruta o ataques de diccionario, deberías tener en consideración:</p>
+<p>1. No uses la misma contraseña para múltiples cuentas, especialmente si estas son importantes.</p>
+<p>2. Usa una clave que tenga como mínimo las siguientes características: 16 caracteres, un número, una letra mayúscula, una letra minúscula, y un símbolo especial.</p>
+<p>3. No uses los nombres y apellidos de tu familia, amigos o mascotas como tus contraseñas.</p>
+<p>4. Como tus contraseñas no uses códigos postales, números de casas, números de teléfono, cumpleaños, números de identificación oficiales, números de seguro social, etc.</p>
+<p>5. No uses ninguna palabra de diccionario como tus contraseñas.</p>
+<p>6. No uses dos o mas contraseñas que se escriban de manera parecida, por ejemplo, ilovefreshflowersMac, ilovefreshflowersDropBox, dado que si una de tus contraseñas es robada, significa que el resto de tus claves también estarán comprometidos.</p>
+<p>7. No uses algo que pueda ser copiado o clonado (pero que no puedas cambiar) como contraseñas, como por ejemplo, tus huellas dactilares.</p>
+<p>8. No permitas que tus navegadores Web (Firefox, Chrome, Safari, Opera, IE) guarden tus contraseñas, dado que todas las claves guardadas en estos pueden ser obtenidas de una manera muy fácil.</p>
+<p>9. No accedas a cuentas importantes en computadoras que no sean tuyos, o cuando estés conectado a redes WI-FI públicas, Tor, VPN gratuitos o proxys web.</p>
+<p>10. No envíes información sensible o importante mediante conexiones HTTP o FTP, ya que los mensajes en este tipo de conexiones puede ser víctima de ataques tipo sniffing muy fácilmente. Deberías usar conexiones encriptadas como HTTPS o SFTP en la medida de lo posible.</p>
+<p>11. Cuando estés viajando, puedes encriptar tu conexión a internet antes de que esta se envié de tu computador, tableta, teléfono móvil o router. Por ejemplo, puedes crear una VPN privada en tu propio servidor (computador personal, servidor dedicado o VPS) y conectarte a el. Como alternativa, puedes crear un túnel SSH encriptado entre tu router y tu computador casero o un servidor remoto que te pertenezca con PuTTY y conectar tus programas (como por ejemplo Firefox) a PuTTY. En este caso, incluso si alguien captura tus datos mientras se transmiten entre estos dispositivos (ej.: computador móvil, IPhone, IPad) y tu servidor con un analizador de paquetes, no serán capaces de robar tu información y contraseñas desde una conexión encriptada.</p>
+<p>12. ¿Qué tan segura es mi contraseña? Quizás creas que tus contraseñas son muy fuertes y difíciles de hackear. Pero si un hacker a robado tu nombre de usuario y los valores de los hash MD5 de las contraseñas de los servidores de la compañía, y la tabla arcoíris del hacker contiene estos hash MD5, entonces tu contraseña será crackeada rápidamente.</p>
+<p>Para verificar la fortaleza de tus contraseñas y saber si se encuentran dentro de las tablas arcoíris más populares, puedes convertir tus hashes MD5 con este generador de hashes MD5, para luego desencriptar tus contraseñas y luego comparar el hash (ej.: C8E7279CD035B23BB9C0F1F954DFF5B3) en un sitio que desencripte los hashes MD5. ¿Cuánto se demorará en desencriptarlo? Puedes ver los resultados tú mismo.</p>
+<p>13. Es recomendado que cambies tus contraseñas cada 10 semanas.</p>
+<p>14. Es recomendado que recuerdes solos unas pocas contraseñas maestras, guardar tus contraseñas en un archivo de texto plano y encriptar dicho archivo con 7-Zip, GPG o un programa de encriptación de disk, como BitLocker, o gestionar tus contraseñas con un programa de gestión de claves.</p>
+<p>15. Encripta y respalda tus contraseñas en diferentes partes, en el caso de que pierdas el acceso a tu computadora o cuenta, puedes recuperar tus claves de manera rápida.</p>
+<p>16. Activa la verificación de 2 pasos cuando sea posible.</p>
+<p>17. No guardes tus contraseñas importantes en la nube.</p>
+<p>18. Accede sitios importantes (ej. Paypal) directamente de tus favoritos, si esto no es posible, por favor revisa el nombre del dominio de manera minuciosa, también es una buena idea revisar la popularidad del sitio con la barra Alexa o asegurarte que no es un sitio que realiza phishing antes de usar tu contraseña.</p>
+<p>19. Protege tu computadora con un programa antivirus y de firewall, descarga programas de sitios con buena reputación y verifica los archivos descargados mediante los checksum MD5 o SHA1 del paquete de instalación en la medida de lo posible.</p>
+<p>20. Manten tu sistema operagtivo (ej. Windows 7, Windows 10, Mac OS X, IOS, Linux) y navegadores Web (ej.: Firefox, Chrome, IE, Microsoft Edge) de tus dispositivos (ej. Windows PC, Mac PC, iPhone, iPad, tableta Android) actualizados con los últimos parches de seguridad.</p>
+<p>21. Si hay archivos importantes en tu computadora, y estos pueden ser accedidos fácilmente por otras personas, revisa si hay keyloggers basados en hardware (ej. sniffers de teclado inalámbricos), programas de keyloggers y cámaras escondidas cuando sientas que es necesarios.</p>
+<p>22. Si hay routers WIFI en tu hogar, entonces es posible saber las contraseñas que has escrito (desde la casa de tu vecino) mediante la detección de los gestos de tus dedos y manos, dado que la señal WIFI que ellos reciben cambiara cuando muevas tus dedos y manos. Puedes usar teclados que aparezcan en la pantalla para escribir tus contraseñas en el caso de que sospeches una actividad maliciosa. Sería más seguro si este teclado virtual (o el programa de teclado) cambie su estructura cada vez que se inicie.</p>
+<p>23. Bloquea tu computadora o teléfono móvil cuando no los estés ocupando.</p>
+<p>24. Encripta todo el disco duro antes de poner archivos importantes en él, y destruye las unidades de tus dispositivos antiguos de manera física si es necesario.</p>
+<p>25. Accede a sitios web importantes en modo privado o incógnito, o usa un navegador Web para acceder a sitios importantes, y otro para acceder a sitios no importantes. También puedes acceder a sitios no importantes en tu sistema operativo principal y crea una máquina virtual para instalar nuevos programas. Estas se pueden usar con programas como VMware, VirtualBox o Parallels. </p>
+<p>26. Usa al menos dos direcciones de correo diferentes, una de ellas para recibir correos de sitios importantes y Apps, como Paypal y Amazon, y la otra para recibir correos de sitios y Apps no importantes. </p>
+<p>27. No hagas click en enlaces que estén dentro de un correo electrónico o un SMS, no reestablezcas tus contraseñas haciendo click en ellos, a menos que sepas que estos mensajes no son falsos.</p>
+<p>28. No le digas tus contraseñas a nadie vía email.</p>
+<p>29. Es posible que un programa o App que hayas descargado o actualizado haya sido modificado por hackers, puedes evitar este problema al no instalar software o Apps que hayan salido recientemente, a excepción de que sean publicadas para corregir agujeros de seguridad. Como alternativa puedes usar apps basadas en Web, las cuales son más seguras y portátiles. </p>
+<p>30. Ten cuidado cuando uses herramientas de pegado de texto y de captura de pantalla que funcionen en línea, por ejemplo, Twitch o pastebin, no dejes que suban tus contraseñas a la nube. </p>
+<p>31. Si eres un webmaster, no almacenes las contraseñas de los usuarios en la base de datos, deberías guardarlo en valores hash salados en vez de las claves de usuarios. </p>
+<p><br/></p>
+<p><strong>This webpage was translated by Andrés. Donations/Donaciones( 0.0015mBTC ): </strong></p>
+<p>
+	Bitcoin wallet: 4f2a3466-adbc-4b42-946c-3ed3522a9f9a
+
+	<!--<img src="//passwordsgenerator.net/es/bt21.png" width="325px" height="125px" border="0">-->
+	</p>
+	     
+	</div><!-- sec_tips -->
+
+	<div class="sec_blank"></div>
+	
+	
+
+			
+	
+	
+	<div id="sec_btm">
+		<p>Short URL: Password.to</p>		
+
+		<p>Copyright &copy; 2012 - 2024 &nbsp; <a href="//PasswordsGenerator.net" title="Password Generator">PasswordsGenerator.net</a>. All Rights Reserved.</p>
+		<p>Copyright &copy; 2012 - 2024 
+<a href="//passwordsgenerator.net/plus/" target="_blank">Password Generator Plus</a>
+</a>
+	</div><!-- sec_btm -->
+
+
+<div style="clear:both"></div>
+
+</div><!-- container -->
+
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//gifmaker.me/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+
+</body> 
+</html>

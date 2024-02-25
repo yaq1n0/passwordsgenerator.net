@@ -1,0 +1,60 @@
+﻿.texts
+{
+	/*float: left;*/
+	width: 898px;
+	margin: 0 0px 0 0px; 
+	padding: 5px 5px 5px 5px; 
+	line-height: 18px;
+/*	resize: none;*/
+	resize:vertical;
+	position: relative;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 14px;	
+}
+
+.TopTexts
+{
+	height: 150px;
+	margin-top: 10px;
+}
+
+.BtmTexts
+{
+	height: 20px;
+}
+
+#ADTop
+{
+	float:left; 
+	padding:0;
+	margin: 5px 10px 0px 0px;
+	width: 728px; 
+	height: 90px; 
+	background:#ddd;
+}
+
+#ADBtm
+{
+	float:left; 
+	padding:0;
+	margin: 0px 10px 10px 0px;
+	width: 728px; 
+	height: 90px; 
+	background:#ddd;
+}
+
+.blank_div_5px
+{
+	float:left;
+	width:100%;
+	height:5px;
+}
+
+.Med
+{
+	margin: 0px 10px 0px 0px;
+	padding: 0 15px 0 15px;
+	height:33px;
+	line-height:33px;	
+	font-size: 14px; 
+}
